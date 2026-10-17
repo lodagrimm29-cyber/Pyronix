@@ -1,0 +1,15 @@
+{
+  "format": 1,
+  "packages": {
+    "pyronix-hello": {
+      "architecture": "x86_64",
+      "archive": "packages/pyronix-hello-1.0.0.pxpkg",
+      "conflicts": [],
+      "dependencies": [],
+      "description": "Small offline package-manager demonstration",
+      "sha256": "47947e1a0b21f7e693c0ab48a831d782405f5bbea9f08da7984b12168f13d4ad",
+      "version": "1.0.0"
+    }
+  },
+  "repository": "pyronix-community"
+}
