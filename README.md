@@ -7,7 +7,14 @@ Repository ID: `pyronix-community`
 
 The feed index (`index.json`) and signature (`index.json.sig`) are verified with the Pyronix public key (`bootstrap-public.pem`). Its SHA-256 is `8608a42381e4782c25eece2596972efc66f865b1fd4f6a4ceca0774aae49edfb`, matching this ISO's `/etc/pyron/bootstrap-repository.pem`.
 
-The initial package is `pyronix-hello` 1.0.0 for x86_64. The feed also provides `pyron-manager-update` 1.0.0. On a running Pyronix system with this feed configured, run `sudo pyron update`, then `sudo pyron install pyron-manager-update`, followed by `sudo pyron self-update`. This update uses BusyBox gzip when Python's optional zlib module is missing, backs up the current manager before atomically activating the new one, and raises the maximum individual package file size to 256 MiB for large optional packages.
+The initial package is `pyronix-hello` 1.0.0 for x86_64. The feed also provides `pyron-manager-update` 1.0.0. If this Pyron image reports that Python's gzip module is unavailable, download and run the one-time bootstrap as root:
+
+```sh
+python3 -c 'import urllib.request; urllib.request.urlretrieve("https://raw.githubusercontent.com/lodagrimm29-cyber/Pyronix/main/updates/pyron/bootstrap.py", "/tmp/pyron-manager-bootstrap.py")'
+sudo python3 /tmp/pyron-manager-bootstrap.py
+```
+
+The bootstrap verifies the feed signature and package checksum, installs only the manager update's three declared files, and activates it with a backup of the old manager. Afterward, normal signed package installs can use BusyBox gzip when Python's optional zlib module is missing. The updated manager supports individual package files up to 256 MiB.
 
 This updates the running system's writable filesystem only. A live ISO session may lose the update at reboot; this repository update does not rebuild or modify the ISO.
 
