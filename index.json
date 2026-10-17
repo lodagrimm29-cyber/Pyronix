@@ -1,6 +1,15 @@
 {
   "format": 1,
   "packages": {
+    "pyron-manager-update": {
+      "architecture": "x86_64",
+      "archive": "packages/pyron-manager-update-1.0.0.pxpkg",
+      "conflicts": [],
+      "dependencies": [],
+      "description": "Adds safe Pyron manager self-update and 256 MiB per-file package support",
+      "sha256": "56a1ab395d016f9c416f963098018557c2cd9816b75eba3411378404586435c5",
+      "version": "1.0.0"
+    },
     "pyronix-hello": {
       "architecture": "x86_64",
       "archive": "packages/pyronix-hello-1.0.0.pxpkg",
